@@ -2,7 +2,7 @@ import axios, { AxiosError } from 'axios';
 import type { PaginatedResponse, ProblemDetails, UpdateTransactionPayload, ValidationError } from '../types';
 
 const API_BASE = import.meta.env.VITE_API_URL ?? '/api';
-const API_KEY  = import.meta.env.VITE_API_KEY  ?? 'dev-api-key-change-me-in-production';
+const API_KEY  = import.meta.env.VITE_API_KEY  ?? 'dev-api-key';
 
 const client = axios.create({
   baseURL: API_BASE,
