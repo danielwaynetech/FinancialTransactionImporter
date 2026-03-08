@@ -16,9 +16,4 @@
     <ProjectReference Include="..\TransactionImporter.Core\TransactionImporter.Core.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Database\" />
-    <Folder Include="Repositories\" />
-  </ItemGroup>
-
 </Project>
