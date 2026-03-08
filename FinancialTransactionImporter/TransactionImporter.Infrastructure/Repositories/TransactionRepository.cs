@@ -6,6 +6,12 @@ using TransactionImporter.Infrastructure.Database;
 
 namespace TransactionImporter.Infrastructure.Repositories
 {
+    /// <summary>
+    /// EF Core implementation of the transaction repository.
+    /// Deletions are soft — records are flagged with IsDeleted rather than
+    /// removed from the database. The global query filter on AppDbContext
+    /// ensures soft-deleted records are excluded from all standard queries.
+    /// </summary>
     public class TransactionRepository : ITransactionRepository
     {
         private readonly AppDbContext _context;
