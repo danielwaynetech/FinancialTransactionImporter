@@ -235,15 +235,9 @@ Returns `204 No Content` on success.
 
 ## Sample CSV
 
-A ready-to-use sample file with 1,050 records is included: **`sample_transactions.csv`**
+A ready-to-use sample file with both valid and invalid data is included: **`sample valid transactions.csv`** and **`sample invalid transactions.csv`**.
+These files use the semicolon as delimiter.
 
-The expected CSV structure is:
-
-```csv
-TransactionTime,Amount,Description,TransactionId
-2024-01-01 08:00:00,123.45,Grocery Store,TXN000001
-2024-01-01 12:30:00,-50.00,ATM Withdrawal,TXN000002
-2024-01-02 09:15:00,2500.00,Salary Deposit,TXN000003
 ```
 
 ### Column Rules
