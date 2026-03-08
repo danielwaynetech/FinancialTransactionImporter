@@ -19,8 +19,4 @@
     <ProjectReference Include="..\TransactionImporter.Infrastructure\TransactionImporter.Infrastructure.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
 </Project>
