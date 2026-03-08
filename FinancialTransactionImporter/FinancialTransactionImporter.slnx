@@ -1,6 +1,6 @@
 <Solution>
-  <Project Path="FinancialTransactionImporter/TransactionImporter.API.csproj" />
-  <Project Path="TransactionImporter.Core/TransactionImporter.Core.csproj" />
-  <Project Path="TransactionImporter.Infrastructure/TransactionImporter.Infrastructure.csproj" />
-  <Project Path="TransactionImporter.Tests/TransactionImporter.Tests.csproj" />
+  <Project Path="src/TransactionImporter.API/TransactionImporter.API.csproj" />
+  <Project Path="src/TransactionImporter.Core/TransactionImporter.Core.csproj" />
+  <Project Path="src/TransactionImporter.Infrastructure/TransactionImporter.Infrastructure.csproj" />
+  <Project Path="tests/TransactionImporter.Tests/TransactionImporter.Tests.csproj" />
 </Solution>

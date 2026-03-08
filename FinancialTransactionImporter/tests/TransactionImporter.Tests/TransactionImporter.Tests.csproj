@@ -13,7 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TransactionImporter.Core\TransactionImporter.Core.csproj" />
+    <ProjectReference Include="..\..\src\TransactionImporter.Core\TransactionImporter.Core.csproj" />
   </ItemGroup>
 
 </Project>
