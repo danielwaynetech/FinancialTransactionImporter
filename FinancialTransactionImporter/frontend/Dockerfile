@@ -9,7 +9,7 @@ COPY . .
 
 # Inject API URL for Docker Compose networking
 ARG VITE_API_URL=/api
-ARG VITE_API_KEY=dev-api-key-change-me-in-production
+ARG VITE_API_KEY=dev-api-key
 ENV VITE_API_URL=$VITE_API_URL
 ENV VITE_API_KEY=$VITE_API_KEY
 
