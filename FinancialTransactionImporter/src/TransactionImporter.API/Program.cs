@@ -92,19 +92,21 @@ using (var scope = app.Services.CreateScope())
     db.Database.EnsureCreated();
 }
 
-// OpenAPI JSON at /openapi/v1.json
-app.MapOpenApi();
-
-// Scalar UI at /scalar/v1
-// PreferredScheme was removed as a direct property in Scalar v2 — use the
-// AddPreferredSecuritySchemes() extension method on the options object instead.
-app.MapScalarApiReference(options =>
+if (app.Environment.IsDevelopment())
 {
-    options.Title = "Financial Transaction Importer API";
-    options.Theme = ScalarTheme.DeepSpace;
-    options.DefaultHttpClient = new(ScalarTarget.Http, ScalarClient.HttpClient);
-    options.AddPreferredSecuritySchemes("ApiKey");
-});
+    app.MapOpenApi();
+    app.MapScalarApiReference(options =>
+    {
+        options.Title = "Financial Transaction Importer API";
+        options.Theme = ScalarTheme.DeepSpace;
+        options.DefaultHttpClient = new(ScalarTarget.Http, ScalarClient.HttpClient);
+        options.AddPreferredSecuritySchemes("ApiKey");
+    });
+}
+
+// Lightweight health check — always available, no auth required
+app.MapGet("/health", () => Results.Ok(new { status = "healthy" }))
+   .ExcludeFromDescription();
 
 app.UseCors("AllowFrontend");
 

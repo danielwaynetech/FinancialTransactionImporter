@@ -34,7 +34,7 @@ This command will:
 |----------|------------------------------|
 | Frontend | http://localhost:3000        |
 | API      | http://localhost:8080        |
-| Swagger  | http://localhost:8080/swagger|
+| Swagger  | http://localhost:5000/scalar | NOTE: dotnet run only - Development mode
 
 ### 3. Stop the stack
 
@@ -63,7 +63,7 @@ Or run via Docker:
 docker run --rm \
   -v "$(pwd):/src" \
   -w /src \
-  mcr.microsoft.com/dotnet/sdk:9.0 \
+  mcr.microsoft.com/dotnet/sdk:10.0 \
   dotnet test tests/TransactionImporter.Tests/TransactionImporter.Tests.csproj
 ```
 
@@ -257,8 +257,8 @@ TransactionTime,Amount,Description,TransactionId
 
 ### Validation Behaviour
 
-- The **entire upload is rejected** if any row fails validation
-- The error message identifies the exact **row number and column name** that failed
+- All rows are validated before any data is written — **every error across all rows is returned in a single response**
+- The error response identifies the exact **row number and column name** for each failure
 - Duplicate `TransactionId` values within the file **or** already in the database are rejected
 
 ---
@@ -283,8 +283,10 @@ FinancialTransactionImporter/
 │       ├── Program.cs
 │       └── appsettings.json
 ├── tests/
-│   └── TransactionImporter.Tests/          # xUnit unit tests for CSV parser
-│       └── CsvParserServiceTests.cs
+└── TransactionImporter.Tests/          # NUnit unit tests
+    ├── CsvParserServiceTests.cs
+    ├── TransactionServiceTests.cs
+    └── TransactionRepositoryTests.cs
 ├── frontend/                               # React + TypeScript SPA
 │   ├── src/
 │   │   ├── components/                     # UploadPanel, TransactionTable, EditModal

@@ -13,6 +13,7 @@
         [
             new("/openapi"),
             new("/scalar"),
+            new("/health"),
         ];
 
         private readonly RequestDelegate _next;
