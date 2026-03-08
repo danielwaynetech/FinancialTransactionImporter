@@ -16,7 +16,7 @@ COPY tests/ tests/
 
 # Build and publish
 WORKDIR /src/src/TransactionImporter.API
-RUN dotnet publish TransactionImporter.API.csproj -c Release -o /app/publish --no-restore -r linux-x64 --self-contained false
+RUN dotnet publish TransactionImporter.API.csproj -c Release -o /app/publish --no-restore --self-contained false
 
 # ── Stage 2: Runtime ──────────────────────────────────────────────────────────
 FROM mcr.microsoft.com/dotnet/aspnet:10.0 AS runtime
