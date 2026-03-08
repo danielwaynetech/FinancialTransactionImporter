@@ -8,6 +8,13 @@
     {
         private const string ApiKeyHeaderName = "X-Api-Key";
 
+        // Paths that should remain publicly accessible
+        private static readonly PathString[] PublicPaths =
+        [
+            new("/openapi"),
+            new("/scalar"),
+        ];
+
         private readonly RequestDelegate _next;
         private readonly string _configuredApiKey;
 
@@ -20,7 +27,7 @@
 
         public async Task InvokeAsync(HttpContext context)
         {
-            if (context.Request.Path.StartsWithSegments("/swagger"))
+            if (PublicPaths.Any(p => context.Request.Path.StartsWithSegments(p)))
             {
                 await _next(context);
                 return;
