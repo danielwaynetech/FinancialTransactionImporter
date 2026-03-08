@@ -58,7 +58,8 @@ namespace TransactionImporter.Infrastructure.Repositories
 
         public async Task<Transaction?> GetByIdAsync(int id)
         {
-            return await _context.Transactions.FindAsync(id);
+            return await _context.Transactions
+                .FirstOrDefaultAsync(t => t.Id == id);
         }
 
         public Task UpdateAsync(Transaction transaction)
@@ -74,8 +75,10 @@ namespace TransactionImporter.Infrastructure.Repositories
         /// </summary>
         public async Task DeleteAsync(int id)
         {
-            var transaction = await _context.Transactions.FindAsync(id);
-            if (transaction is null)
+            var transaction = await _context.Transactions
+                .FirstOrDefaultAsync(t => t.Id == id);
+
+            if (transaction is null || transaction.IsDeleted == true)
                 return;
 
             transaction.IsDeleted = true;
