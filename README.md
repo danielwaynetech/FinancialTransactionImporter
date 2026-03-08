@@ -235,10 +235,8 @@ Returns `204 No Content` on success.
 
 ## Sample CSV
 
-A ready-to-use sample file with both valid and invalid data is included: **`sample valid transactions.csv`** and **`sample invalid transactions.csv`**.
+A ready-to-use sample file with both valid and invalid data is included: **`sample valid transactions.csv`** and **`sample invalid transactions.csv`**
 These files use the semicolon as delimiter.
-
-```
 
 ### Column Rules
 
