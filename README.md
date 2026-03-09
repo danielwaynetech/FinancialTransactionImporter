@@ -34,7 +34,7 @@ This command will:
 |----------|------------------------------|
 | Frontend | http://localhost:3000        |
 | API      | http://localhost:8080        |
-| Swagger  | http://localhost:5000/scalar | NOTE: dotnet run only - Development mode
+| Scalar   | http://localhost:5000/scalar | NOTE: dotnet run only - Development mode
 
 ### 3. Stop the stack
 
@@ -80,14 +80,14 @@ The delimiter used when parsing uploaded CSV files is configured via:
 **`docker-compose.yml`:**
 ```yaml
 environment:
-  CsvSettings__Delimiter: ","
+  CsvSettings__Delimiter: ";"
 ```
 
 **`appsettings.json`:**
 ```json
 {
   "CsvSettings": {
-    "Delimiter": ","
+    "Delimiter": ";"
   }
 }
 ```
@@ -270,12 +270,13 @@ FinancialTransactionImporter/
 │   │   └── Repositories/TransactionRepository.cs
 │   └── TransactionImporter.API/            # ASP.NET Core Web API
 │       ├── Controllers/TransactionsController.cs
-│       ├── Middleware/ApiKeyMiddleware.cs, ApiProblemDetailsFactory.cs
+│       ├── Middleware/ApiKeyMiddleware.cs
+│       ├── Middleware/ApiProblemDetailsFactory.cs
 │       ├── DTOs/TransactionDto.cs
 │       ├── Program.cs
 │       └── appsettings.json
 ├── tests/
-└── TransactionImporter.Tests/          # NUnit unit tests
+└── TransactionImporter.Tests/              # Unit tests
     ├── CsvParserServiceTests.cs
     ├── TransactionServiceTests.cs
     └── TransactionRepositoryTests.cs
